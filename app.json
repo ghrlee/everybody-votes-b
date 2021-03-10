@@ -1,0 +1,12 @@
+{
+  "name": "everybody-votes-native",
+  "displayName": "everybody-votes-native",
+  "expo": {
+    "name": "everybody-votes-native",
+    "slug": "everybody-votes-native",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
