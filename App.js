@@ -5,16 +5,16 @@ import { ListItem, Icon, Avatar } from 'react-native-elements';
 // const listItems = ({options}) => (options.map((optionItem) =>  <li>{optionItem.text}</li>));
 
 const renderItem = ({ item }) => (
-  <ListItem bottomDivider>
-<Avatar
-  rounded
-  source={{
-    uri:
-      'https://www.byrdie.com/thmb/pr2U7ghfvv3Sz8zJCHWFLT2K55E=/735x0/cdn.cliqueinc.com__cache__posts__274058__face-masks-for-pores-274058-1543791152268-main.700x0c-270964ab60624c5ca853057c0c151091-d3174bb99f944fc492f874393002bab7.jpg',
-  }}
-  />
+  <ListItem bottomDivider containerStyle={{backgroundColor:"powderblue"}}>
+    <Avatar
+      rounded
+      source={{
+        uri:
+          'https://www.byrdie.com/thmb/pr2U7ghfvv3Sz8zJCHWFLT2K55E=/735x0/cdn.cliqueinc.com__cache__posts__274058__face-masks-for-pores-274058-1543791152268-main.700x0c-270964ab60624c5ca853057c0c151091-d3174bb99f944fc492f874393002bab7.jpg',
+      }}
+      />
 
-    <ListItem.Content>
+    <ListItem.Content style={styles.content}>
       <ListItem.Title>{item.question}</ListItem.Title>
       <ListItem.Subtitle>{item.description}</ListItem.Subtitle>
     </ListItem.Content>
@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: StatusBar.currentHeight || 0,
+    backgroundColor: 'powderblue'
   },
   item: {
     padding: 20,
@@ -63,6 +64,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
   },
+  content: {
+    backgroundColor: 'white',
+    padding: 5,
+    borderRadius: 10
+  }
 });
 
 // import React, { useState } from "react";
