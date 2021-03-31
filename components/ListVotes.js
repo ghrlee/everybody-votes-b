@@ -35,7 +35,7 @@ function ListVotes({navigation}) {
   const [selectedId, setSelectedId] = useState(null);
 
   useEffect(() => {
-    fetch('https://everybody-votes-a.herokuapp.com/polls.json')
+    fetch('http://localhost:3000/polls')
       .then((response) => response.json())
       .then((json) => setData(json))
       .catch((error) => console.error(error))
