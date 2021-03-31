@@ -8,17 +8,27 @@ const makeRequest = () => (
   console.log("thing is happening")
 );
 
-function AddVoteScreen() {
-  const [text, onChangeText] = React.useState("Useless Text");
+function AddVoteScreen({navigation}) {
+  const [question, onChangeQuestion] = React.useState("Ask a question");
+  const [description, onChangeDescription] = React.useState("More Info")
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ alignItems: 'center', justifyContent: 'center' }}>
       <Text>Vote to add</Text>
-
       {/* form */}
       <TextInput
-        onChangeText={onChangeText}
-        value={text}
+        style={styles.input}
+        onChangeText={onChangeQuestion}
+        value={question}
       />
+
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeDescription}
+        value={description}
+        multiline
+        numberOfLines={4}
+      />
+
 
       {/* button */}
       <Button
@@ -31,10 +41,10 @@ function AddVoteScreen() {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              question: 'text',
-              description: 'here is the description'
+              question: question,
+              description: description
               })
-            });
+            }).then(navigation.navigate('Everybody Votes 🌮'));
           }
         }
       />
@@ -43,3 +53,12 @@ function AddVoteScreen() {
 }
 
 export default AddVoteScreen;
+
+const styles = StyleSheet.create({
+  input: {
+    height: 40,
+    margin: 12,
+    width: 300,
+    borderWidth: 1,
+  },
+});
