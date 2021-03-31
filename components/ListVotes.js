@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Button,
-         View, 
-         ActivityIndicator, 
-         FlatList, 
-         StyleSheet } from 'react-native';
 import { ListItem, Icon, Avatar } from 'react-native-elements';
+import {  Button,
+          View, 
+          ActivityIndicator, 
+          FlatList, 
+          StyleSheet } from 'react-native';
 
 const renderItem = ({ item }) => (
   <ListItem bottomDivider containerStyle={{backgroundColor:"powderblue"}}>
@@ -21,7 +21,13 @@ const renderItem = ({ item }) => (
       <ListItem.Subtitle>{item.description}</ListItem.Subtitle>
     </ListItem.Content>
   </ListItem>
-  )
+);
+
+const LoadingListItems = () => (
+  <View style={styles.container}>
+    <ActivityIndicator size="large"/>
+  </View>
+);
 
 function ListVotes({navigation}) {
   const [isLoading, setLoading] = useState(true);
@@ -31,9 +37,7 @@ function ListVotes({navigation}) {
   useEffect(() => {
     fetch('https://everybody-votes-a.herokuapp.com/polls.json')
       .then((response) => response.json())
-      // .then((json) => console.log(json))
       .then((json) => setData(json))
-      // .then((data) => console.log(data))
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
   }, []);
@@ -43,9 +47,9 @@ function ListVotes({navigation}) {
       headerRight: () => (
         <View style={{paddingHorizontal: 30}}>
           <Button 
-            title="[+]" 
+            title="Add Vote" 
             onPress={() => {
-              navigation.navigate('New Vote')
+                navigation.navigate('New Vote 🍎')
               }
             }
           />
@@ -56,12 +60,12 @@ function ListVotes({navigation}) {
   
   return (
     <View>
-      {isLoading ? <ActivityIndicator/> : (
-          <FlatList
+      {isLoading ? <LoadingListItems/> : (
+        <FlatList
           data={data}
           keyExtractor={({ id }, index) => id.toString()}
           renderItem={renderItem}
-          />
+        />
       )}
     </View>
   )
@@ -82,9 +86,13 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     padding: 5,
     borderRadius: 10,
-    // border: 2
   },
   headerButton: {
     padding: 30
+  },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    paddingVertical: 50
   }
 });

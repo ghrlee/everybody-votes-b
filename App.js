@@ -4,14 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import ListVotes from './components/ListVotes';
-
-function AddVoteScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Add Vote</Text>
-    </View>
-  );
-}
+import AddVoteScreen from './components/AddVoteScreen';
 
 const Stack = createStackNavigator();
 
@@ -20,8 +13,8 @@ function App( ) {
     <SafeAreaView style={styles.container}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Votes">
-          <Stack.Screen name="Votes" component={ListVotes} />
-          <Stack.Screen name="New Vote" component={AddVoteScreen} />
+          <Stack.Screen name="Everybody Votes 🌮" component={ListVotes} />
+          <Stack.Screen name="New Vote 🍎" component={AddVoteScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
